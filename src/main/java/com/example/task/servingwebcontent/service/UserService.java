@@ -1,19 +1,28 @@
 package com.example.task.servingwebcontent.service;
 
+import com.example.task.servingwebcontent.UserRepository;
 import com.example.task.servingwebcontent.entity.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class UserService {
-    public List<User> getUsers() {
-        User e1 = new User();
-        e1.setName("Ihorko");
-        ArrayList<User> users = new ArrayList<>();
-        users.add(e1);
-        return users;
+
+    @Autowired
+    private final UserRepository userRepository;
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
+    public List<User> getUsers() {
+        return userRepository.findAll();
+    }
+
+    public boolean isUserExist(User user) {
+        return getUsers().stream().anyMatch(currentUser -> currentUser.getLogin().equals(user.getLogin()) &&
+                currentUser.getPassword().equals(user.getPassword()));
+    }
 }
