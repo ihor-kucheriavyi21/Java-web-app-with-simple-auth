@@ -1,37 +1,25 @@
-<%@page import="java.util.ArrayList"%>
-<%@page import="com.example.task.servingwebcontent.entity.User"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
     <head>
         <title>View Users</title>
     </head>
     <body>
+        <a href="/greeting">Greeting</a>
+        <a href="/logout">Logout</a>
         <table>
             <thead>
                 <tr>
                     <th>Name</th>
+                    <th>Login</th>
                 </tr>
             </thead>
             <tbody>
-            <%
-                double num = Math.random();
-                if (num > 0.95) {
-              %>
-                  <h2>You'll have a luck day!</h2><p>(<%= num %>)</p>
-              <%
-                } else {
-              %>
-                  <h2>Well, life goes on ... </h2><p>(<%= num %>)</p>
-              <%
-                }
-              %>
-              <a href="<%= request.getRequestURI() %>"><h3>Try Again</h3></a>
-              <% ArrayList<User> userList=(ArrayList<User>) request.getAttribute("users");
-                for (User user : userList) { %>
-                    <div><%= user.getName() %></div>
-                <%
-                }
-                %>
+                 <c:forEach items="${users}" var="user">
+                    <tr>
+                      <td>${user.name}</td>
+                      <td>${user.login}</td>
+                    </tr>
+                 </c:forEach>
             </tbody>
         </table>
     </body>
