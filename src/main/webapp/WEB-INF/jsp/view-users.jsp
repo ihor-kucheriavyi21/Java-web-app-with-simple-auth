@@ -5,8 +5,8 @@
     <title>View Users</title>
 </head>
 <body>
-<a href="/greeting">Greeting</a>
-<a href="/logout">Logout</a>
+<%@ include file="common/navbar.jspf" %>
+
 <div class="container">
     <table>
         <thead>

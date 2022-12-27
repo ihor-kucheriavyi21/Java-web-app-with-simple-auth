@@ -10,9 +10,9 @@ import java.util.List;
 @Component
 public class UserRepository {
 
-    private final List<User> users = new ArrayList<>(Arrays.asList(new User("Ihor", "login", "1234"),
-            new User("Ihor2", "login2", "1234"),
-            new User("Ihor3", "login3", "1234")));
+    private final List<User> users = new ArrayList<>(Arrays.asList(new User("Ihor", "user", "1234"),
+            new User("Ihor2", "user2", "1234"),
+            new User("Ihor3", "user3", "1234")));
 
     public List<User> findAll() {
         return users;

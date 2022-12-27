@@ -5,8 +5,8 @@
     <title>Greeting page</title>
 </head>
 <body>
-    <a href="/user/viewUsers">Users</a>
-    <a href="/logout">Logout</a>
-    <h1>Hello ${login}!</h1>
+<%@ include file="common/navbar.jspf" %>
+
+<h1>Hello ${login}!</h1>
 </body>
 </html>
